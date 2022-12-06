@@ -1,4 +1,7 @@
 # Element-1-Project
+
+vedio link: https://youtu.be/Bya-jQ0aqV0
+
 ## Inspiration
 The project was inspired by my favourite video game 'Disco Elysium'.  
 
