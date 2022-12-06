@@ -2,7 +2,6 @@
 <html>
 <head>
   
-  
   <script>window.onerror = function(error, url, line) {parent.postMessage(["console", "❌ -- [ERROR] -- ❌ -- ⚠️ " + error], "*")};var cl = console.log;console.log = function () {var msg = [...arguments].join();parent.postMessage(["console", msg], "*");  }  </script><script crossorigin src='//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js'>
 </script>
 <script crossorigin src="OrbitControls.js">
@@ -10,49 +9,71 @@
  <script src = "https://mimicproject.com/libs/maximilian.js">
 </script> 
   
+<a href="javascript:playPause();">  </a>
+  
  <style>
    * {
     margin: 0;
     overflow: hidden;
     padding: 0;
-   
 }
-   
   </style>
  
+  <h1>You're whirling in rags </h1>
+<h2>You're vast and you're sad </h2>
   
-  <h1>DISCO </h1> 
+   <h3>Click to play </h3> 
   
-   <div class="buttons">
-  <button id="space">Space</button>
-  <button id="mountains">Mountains</button>
-    <button id="water">Water</button>
-  <button id="lava">Lava</button>
-<button id="autoRotate">Auto Rotate</button>
-
-<button id="zoom">Outside Box</button>
+  
+  <div class="buttons">
+  <button id="Riviera">Riviera</button>
+  <button id="Whirling">Whirling</button>
+   <button id="Tiger King">Tiger King</button>
+  <button id="Fire Escape">Fire Escape</button>
+  <button id="Polyhedrons">Polyhedrons</button>
+  <button id="Burn Baby">Burn Baby</button>
 
 </div>
   
-  
  <style>
+   
+   
   h1 {
   color: white;
   z-index: 1;
   position: absolute;
   font-family: 'Staatliches';
-  text-shadow: 2px 2px 8px rgba(255,255,255,0.7);
-  font-size: 60px;
-  top: 13px;
+  text-shadow: 2px 2px 8px rgba(155,255,255,0.7);
+  font-size: 20px;
+  bottom: 73px;
   left: 80px;
 } 
+   h2 {
+  color: white;
+  z-index: 1;
+  position: absolute;
+  font-family: 'Staatliches';
+  text-shadow: 2px 2px 8px rgba(155,255,255,0.7);
+  font-size: 20px;
+  bottom: 33px;
+  left: 180px;
+}  
    
+   
+   h3 {
+  color: #c0c0c060;
+  z-index: 1;
+  position: absolute;
+  font-size: 18px;
+  top: 18px;
+  right: 27px;
+} 
    
    
   .buttons {
   position: fixed;
-  top: 20px;
   right: 20px;
+  top: 48px;
   display: flex;
   flex-direction: column;
 
@@ -60,10 +81,11 @@
 button {
   margin-bottom: 6px;
   width: 120px;
+  height: 20px;
   font-size: 14px;
   outline: none;
-  background: #c0c0c0;
-  color: #ddd;
+  background: #c0c0c080;
+  color: #3f3f3f;
   border: none;
   text-transform: uppercase;
   opacity: .5;
@@ -80,16 +102,12 @@ button:active {
   </style>
   
   
-  
-  
 </head>
 <body>
   
 
 <script>
     
-
-  
 </script>
     
   
@@ -112,11 +130,14 @@ button:active {
     x: 0,
     y: 0
 };
-HEIGHT = window.innerHeight,
+   
+    
+    HEIGHT = window.innerHeight,
     WIDTH = window.innerWidth,
     flag = true;
     const Pi = Math.PI;
 
+    
     function createMesh(geometry, index) {
         var material = new THREE.MeshBasicMaterial({
             color: colors[index],
@@ -223,15 +244,33 @@ return out;
 audio.play = function() {
 
 return myMusic();
-      
+  
+  
+  
+  
+        const playButton = document.getElementById('playButton');   
+      let playAudio = () => {
+        playButton.innerHTML  = maxi.play() ? "STOP":"PLAY"
+      }
+      playButton.addEventListener("click", () => playAudio());
+  
     }  
 
   
+  function playPause() {
+    var music = document.getElementById('music2');
+    var music_btn = document.getElementById('music_btn2');
   
+    if (music.paused){
+        music.play();
+    }
+    else{
+        music.pause();
+      
+    }
+} 
   
 
-  
-  
   
   
 </script>
