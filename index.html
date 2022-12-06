@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  
+  <script>window.onerror = function(error, url, line) {parent.postMessage(["console", "❌ -- [ERROR] -- ❌ -- ⚠️ " + error], "*")};var cl = console.log;console.log = function () {var msg = [...arguments].join();parent.postMessage(["console", msg], "*");  }  </script><script crossorigin src='//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js'>
+</script>
+<script crossorigin src="OrbitControls.js">
+</script>
+ <script src = "https://mimicproject.com/libs/maximilian.js">
+</script> 
+  
+ <style>
+   * {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+   
+}
+   
+  </style>
+ 
+  
+  <h1>DISCO </h1> 
+  
+   <div class="buttons">
+  <button id="space">Space</button>
+  <button id="mountains">Mountains</button>
+    <button id="water">Water</button>
+  <button id="lava">Lava</button>
+<button id="autoRotate">Auto Rotate</button>
+
+<button id="zoom">Outside Box</button>
+
+</div>
+  
+  
+ <style>
+  h1 {
+  color: white;
+  z-index: 1;
+  position: absolute;
+  font-family: 'Staatliches';
+  text-shadow: 2px 2px 8px rgba(255,255,255,0.7);
+  font-size: 60px;
+  top: 13px;
+  left: 80px;
+} 
+   
+   
+   
+  .buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+
+}
+button {
+  margin-bottom: 6px;
+  width: 120px;
+  font-size: 14px;
+  outline: none;
+  background: #c0c0c0;
+  color: #ddd;
+  border: none;
+  text-transform: uppercase;
+  opacity: .5;
+}
+button:hover {
+  background: #222;
+  color: #eee;
+}
+button:active {
+  background: #111;
+  color: #fff; 
+ }
+   
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+  
+
+<script>
+    
+
+  
+</script>
+    
+  
+  
+<script language="javascript" type="text/javascript">
+
+  
+  
+  (function() {
+    var colors = [0xfc63b3, 0xfff48d, 0x94fff5, 0xd68fff];
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    var scene, camera, renderer;
+
+    var spheres, sphere;
+
+    var mousePos = {
+    x: 0,
+    y: 0
+};
+HEIGHT = window.innerHeight,
+    WIDTH = window.innerWidth,
+    flag = true;
+    const Pi = Math.PI;
+
+    function createMesh(geometry, index) {
+        var material = new THREE.MeshBasicMaterial({
+            color: colors[index],
+            wireframe: true
+        });
+
+        var mesh = new THREE.Mesh(geometry, material);
+
+        return mesh;
+    }
+
+
+    function init() {
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 10000);
+        camera.position.z = 100;
+
+        scene.add(camera);
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize(w, h);
+        renderer.setClearColor(0x232A35);
+
+        spheres = new THREE.Group();
+
+        for (var i = 0; i < 4; i++) {
+            sphere = createMesh(new THREE.SphereGeometry(25 - (i * 5), 10, 10), i);
+            sphere.rotation.x = Math.random() * 100;
+
+            spheres.add(sphere);
+        }
+
+        scene.add(spheres);
+
+        document.body.appendChild(renderer.domElement);
+
+        renderer.render(scene, camera);
+    }
+
+    init();
+
+
+    function render() {
+        requestAnimationFrame(render);
+
+        for (var i = 0; i < 4; i++) {
+            spheres.children[i].rotation.x += 0.005 * (i + 1);
+            spheres.children[i].rotation.y += 0.005 * (i + 1);
+        }
+
+        renderer.render(scene, camera);
+    }
+
+    render();
+})();
+  
+  
+  
+  function animate() {
+    requestAnimationFrame(animate);
+    mesh.rotation.x += 0.003;
+    mesh.rotation.y += 0.007;
+    renderer.render(scene, camera);
+}
+  
+  
+  
+let maxi = maximilian();
+let audio = new maxi.maxiAudio();
+let music = new maxi.maxiSample();
+let myOsc = new maxi.maxiOsc();
+
+const mountainsBtn = document.getElementById('mountains');
+const waterBtn = document.getElementById('water');
+const lavaButton = document.getElementById('lava');
+const autoRotateBtn = document.getElementById('autoRotate');
+const zoomBtn = document.getElementById('zoom');
+const loading = document.getElementById('loading');
+
+
+spaceBtn.addEventListener('click', () => switchSkyBox('purplenebula'))
+mountainsBtn.addEventListener('click', () => switchSkyBox('afterrain'))
+waterBtn.addEventListener('click', () => switchSkyBox('aqua9'))
+lavaButton.addEventListener('click', () => switchSkyBox('flame'))
+autoRotateBtn.addEventListener('click', () => toggleAutoRotate(!autoRotate))
+zoomBtn.addEventListener('click', () => toggleZoom(!zoomOut))    
+  
+  
+audio.init();
+
+audio.loadSample('0107Centuries - Fall Out Boy.mp3', music);
+
+function myMusic(){
+var out=0;
+
+audio.currentTime = 0;
+
+out = music.play();
+
+return out;  
+}  
+  
+audio.play = function() {
+
+return myMusic();
+      
+    }  
+
+  
+  
+  
+
+  
+  
+  
+  
+</script>
+</body>
+</html>
